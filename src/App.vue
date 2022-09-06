@@ -2,7 +2,7 @@
   <div id="app">
     <a-input placeholder="请输入任务" class="my_ipt" :value="inputValue" @change="valueChange" />
     <a-button type="primary" @click="addItemToList">添加事项</a-button>
-    <a-list bordered :dataSource="list" class="dt_list">
+    <a-list bordered :dataSource="infoList" class="dt_list">
       <a-list-item slot="renderItem" slot-scope="item">
         <!-- 复选框 -->
         <a-checkbox
@@ -39,8 +39,8 @@ export default {
     return {}
   },
   computed: {
-    ...mapState(['list', 'inputValue', 'highLightBtn']),
-    ...mapGetters(['unDoneListLength'])
+    ...mapState(['inputValue', 'highLightBtn']),
+    ...mapGetters(['unDoneListLength', 'infoList'])
   },
   created () {
     this.$store.dispatch('getList')

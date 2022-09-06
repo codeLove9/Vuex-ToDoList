@@ -13,6 +13,15 @@ export default new Vuex.Store({
   getters: {
     unDoneListLength (state) {
       return state.list.filter(item => item.done === false).length
+    },
+    infoList (state) {
+      if (state.highLightBtn === 'all') {
+        return state.list
+      } else if (state.highLightBtn === 'undone') {
+        return state.list.filter(item => item.done !== true)
+      } else {
+        return state.list.filter(item => item.done === true)
+      }
     }
   },
   mutations: {
